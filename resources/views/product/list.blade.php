@@ -3,8 +3,11 @@
 	<div class="row">
 		<div class="col-12 text-center pt-5">
 			<h1 class="display-one m-5">PHP Laravel Project - CRUD</h1>
-			<div class="text-left"><a href="product/create" class="btn btn-outline-primary">Add new
-				product</a></div>
+
+			<div class="text-left"><a href="/" class="btn btn-outline-primary">Home</a>
+			</div>
+			<div class="text-left"><a href="product/create" class="btn btn-outline-primary">Add newproduct</a>
+			</div>
 
 			<table class="table mt-3  text-left">
 				<thead>
@@ -71,5 +74,10 @@ function dismissModel() {
 	confirmationModal.classList.remove('show');
 	confirmationModal.classList.add('fade');
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+            // Call your function here
+            dismissModel();
+        });
 </script>
 @endsection

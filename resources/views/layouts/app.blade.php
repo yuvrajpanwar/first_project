@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Your App Title')</title>
+    <title>@yield('title', 'CRUD')</title>
     <!-- Add your CSS and JS includes here -->
 </head>
 <body>

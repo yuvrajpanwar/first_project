@@ -7,22 +7,24 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+
     //
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(Request $request, Product $product)
     {
 
         // dd("hello");
-        $products = $request->all(); //fetch all products from DB
+        $products = $product->all(); //fetch all products from DB
 
-        //  dd($products);
+        //dd($products);
 
         return view('product.list', ['products' => $products]);
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -33,6 +35,7 @@ class ProductController extends Controller
     {
         return view('product.add');
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -48,10 +51,12 @@ class ProductController extends Controller
             'price' => $request->price
         ]);
         
-        return redirect('product/' . $newPost->id . '/edit');
+        return redirect('product');
     }
 
+
     /**
+     * 
      * Display the specified resource.
      *
      * @param  \App\Models\Product  $product
@@ -62,18 +67,24 @@ class ProductController extends Controller
         //
     }
 
+
     /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit(Request $request, $id, Product $product)
     {
+        $product = Product::find($request->id);
+        //dd($product->title);
+        // dd($request->id);
         return view('product.edit', [
             'product' => $product,
         ]);
+
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -84,14 +95,17 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
+        $product = Product::find($request->id);
         $product->update([
             'title' => $request->title,
             'short_notes' => $request->short_notes,
             'price' => $request->price
         ]);
         
-        return redirect('product/' . $product->id . '/edit');
+        return redirect('product');
     }
+
+
 
     /**
      * Remove the specified resource from storage.
@@ -99,8 +113,9 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy(Product $product, Request $request)
     {
+        $product = Product::find($request->id);
         $product->delete();
         return redirect('product/');
     }

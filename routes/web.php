@@ -26,3 +26,11 @@ Route::get('product/create', [ProductController::class,"create"]);
 Route::post('product/create', [ProductController::class,"store"]);
 
 Route::get('product/create', [ProductController::class,"create"]);
+
+Route::get('/product/{id}/edit',[ProductController::class,'edit']);
+
+Route::put('/product/{id}/edit',[ProductController::class,'update']);
+
+Route::delete('/product/{id}',[ProductController::class,'destroy']);
+
+
