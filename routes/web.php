@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProductController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -18,4 +19,10 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route:: post('/register',[UserController::class,'register']);
+Route::get('product', [ProductController::class,"index"]);
+
+Route::get('product/create', [ProductController::class,"create"]);
+
+Route::post('product/create', [ProductController::class,"store"]);
+
+Route::get('product/create', [ProductController::class,"create"]);
